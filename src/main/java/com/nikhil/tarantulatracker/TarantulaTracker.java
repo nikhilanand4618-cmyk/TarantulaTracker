@@ -11,10 +11,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(
-        modid = "tarantulatracker",
-        name = "Tarantula Tracker",
-        version = "1.0.0",
-        clientSideOnly = true
+    modid = "tarantulatracker",
+    name = "Tarantula Tracker",
+    version = "1.0.0",
+    clientSideOnly = true
 )
 public class TarantulaTracker {
 
@@ -28,10 +28,11 @@ public class TarantulaTracker {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+
         MinecraftForge.EVENT_BUS.register(this);
 
         ClientCommandHandler.instance.registerCommand(
-                new TrackerCommand()
+            new TrackerCommand()
         );
 
         System.out.println("Tarantula Tracker loaded!");
@@ -39,6 +40,7 @@ public class TarantulaTracker {
 
     @SubscribeEvent
     public void renderOverlay(RenderGameOverlayEvent.Text event) {
+
         if (!enabled) {
             return;
         }
@@ -55,64 +57,66 @@ public class TarantulaTracker {
         int y = 10;
 
         font.drawStringWithShadow(
-                "§5§lTarantula Tracker",
-                x,
-                y,
-                0xFFFFFF
+            "§5§lTarantula Tracker",
+            x,
+            y,
+            0xFFFFFF
         );
 
         font.drawStringWithShadow(
-                "§fTotal Drops: §e" + totalDrops,
-                x,
-                y + 12,
-                0xFFFFFF
+            "§fTotal Drops: §e" + totalDrops,
+            x,
+            y + 12,
+            0xFFFFFF
         );
 
         font.drawStringWithShadow(
-                "§fRare: §a" + rareDrops,
-                x,
-                y + 24,
-                0xFFFFFF
+            "§fRare: §a" + rareDrops,
+            x,
+            y + 24,
+            0xFFFFFF
         );
 
         font.drawStringWithShadow(
-                "§fVery Rare: §b" + veryRareDrops,
-                x,
-                y + 36,
-                0xFFFFFF
+            "§fVery Rare: §b" + veryRareDrops,
+            x,
+            y + 36,
+            0xFFFFFF
         );
 
         font.drawStringWithShadow(
-                "§fCrazy Rare: §d" + crazyRareDrops,
-                x,
-                y + 48,
-                0xFFFFFF
+            "§fCrazy Rare: §d" + crazyRareDrops,
+            x,
+            y + 48,
+            0xFFFFFF
         );
 
         font.drawStringWithShadow(
-                "§fInsane: §c" + insaneDrops,
-                x,
-                y + 60,
-                0xFFFFFF
+            "§fInsane: §c" + insaneDrops,
+            x,
+            y + 60,
+            0xFFFFFF
         );
     }
 
     public static void toggleTracker() {
+
         enabled = !enabled;
 
         Minecraft mc = Minecraft.getMinecraft();
 
         if (mc.thePlayer != null) {
             mc.thePlayer.addChatMessage(
-                    new ChatComponentText(
-                            "§5[Tarantula Tracker] §f" +
-                            (enabled ? "§aEnabled" : "§cDisabled")
-                    )
+                new ChatComponentText(
+                    "§5[Tarantula Tracker] §f" +
+                    (enabled ? "§aEnabled" : "§cDisabled")
+                )
             );
         }
     }
 
     public static void resetTracker() {
+
         totalDrops = 0;
         rareDrops = 0;
         veryRareDrops = 0;
