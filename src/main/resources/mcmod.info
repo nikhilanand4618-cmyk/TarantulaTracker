@@ -4,7 +4,7 @@
     "name": "Tarantula Tracker",
     "description": "Tracks tarantula drops and events.",
     "version": "1.0.0",
-    "mcversion": "1.12.2",
+    "mcversion": "1.8.9",
     "authorList": ["Nikhil"],
     "credits": "Nikhil",
     "dependencies": []
